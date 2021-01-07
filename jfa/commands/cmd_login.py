@@ -6,6 +6,10 @@ from requests.auth import HTTPBasicAuth
 from jfa.util.auth import _write_to_config
 
 
+def _print_response_error(response):
+    pass
+
+
 @click.command()
 @click.option('--username', prompt=True, help='Your Jfrog artifactory username')
 @click.option('--server', prompt=True,
@@ -21,12 +25,13 @@ def cli(username, server, password):
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     params = {'username': username, 'scope': 'api:* member-of-groups:*', 'expires_in': 0}
     try:
-        access_token = \
-            json.loads(
-                requests.post(token_url, auth=HTTPBasicAuth(username, password), headers=headers, params=params).text)[
-                'access_token']
-        _write_to_config(access_token, username, password, server)
-        click.echo("Login successful :)")
+        response = requests.post(token_url, auth=HTTPBasicAuth(username, password), headers=headers, params=params)
+        if response.ok:
+            access_token = json.loads(response.text)['access_token']
+            _write_to_config(access_token, username, password, server)
+            click.echo("Login successful :)")
+        else:
+            _print_response_error(response)
     except (KeyError, JSONDecodeError):
         click.echo('Error: Bad credentials. Note that this tool is built only for admin users only. '
                    'Please try again, and Make sure your user have sufficient permissions')
