@@ -24,7 +24,7 @@ def info(ctx):
         response = requests.get(f'{ctx.obj.credentials.base_api_url}storageinfo',
                             auth=BearerAuth(ctx.obj.credentials.access_token))
         if response.ok:
-            _print_json(info)
+            _print_json(response.text)
         else:
             _print_response_error(response)
     except (TypeError, AttributeError):
