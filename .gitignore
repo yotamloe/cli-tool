@@ -1,5 +1,6 @@
 venv
 __pychache__
+jfa/__pychache__
 MANIFEST.in
 requirements.txt
 jfa.egg-info
