@@ -7,3 +7,4 @@ jfa.egg-info
 .pip
 .idea
 dist
+/jfa/__pycache__
