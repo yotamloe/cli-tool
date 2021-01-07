@@ -1,0 +1,8 @@
+venv
+__pychache__
+MANIFEST.in
+requirements.txt
+jfa.egg-info
+.pip
+.idea
+dist
