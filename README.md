@@ -14,7 +14,7 @@ jfa login
 ```
 Or
 ```shell
-jfa login -n <username> -p <password> -em <email>
+jfa login --username <username> --password <password> --server <server>
 ```
 You will need to provide:
 1. `username` - your artifactory username
