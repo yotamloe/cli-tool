@@ -8,10 +8,7 @@
 ``` shell
 pip install jfa -i http://yotamloewenbach.jfrog.io/artifactory/api/pypi/Jfrog_instance_cli/simple --trusted-host yotamloewenbach.jfrog.io
 ```
-* Login to your instance (admin users only), you will need to provide:
-1. `username` - your artifactory username
-2. `password` - your artifactory password
-3. `server` - your jfrog.io subdomain (for example if your instance url is `http://myinstance.jfrog.io` enter `myinstance`)
+* Login to your instance (admin users only):
 ``` shell
 jfa login
 ```
@@ -19,6 +16,10 @@ Or
 ```shell
 jfa login -n <username> -p <password> -em <email>
 ```
+You will need to provide:
+1. `username` - your artifactory username
+2. `password` - your artifactory password
+3. `server` - your jfrog.io subdomain (for example if your instance url is `http://myinstance.jfrog.io` enter `myinstance`)
 * Run `jfa --help` to list all commands:
 ```shell
 Usage: jfa [OPTIONS] COMMAND [ARGS]...
